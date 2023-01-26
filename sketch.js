@@ -7,12 +7,15 @@ https://processing.org/examples/tree.html
 Biying Yao 2022/11/25
 */
 
+let canvas;
+let button;
 let fish = [];
 let angle = 0;
 let side = 0;
 
 function setup() {
-  createCanvas(1200, 800);
+  canvas = createCanvas(1200, 800);
+  canvas.parent("sketch-container"); //move our canvas inside this HTML element
   frameRate(10);
 
   //slider 1 for angle
@@ -30,6 +33,8 @@ function setup() {
   slider3.position(60, 200);
   slider3.style('width', '150px');
 
+  //add button
+  addButton();
 
   strokeJoin(ROUND);
   for (let i = 0; i < 25; i++) {
@@ -52,8 +57,7 @@ function draw() {
   text('Angle', 24, 115);
   text('Speed', 24, 162);
   text('Radius', 24, 213);
-
-
+  
   // draw fish 
   for (let i = 0; i < 25; i++) {
     fish[i].show();
@@ -109,9 +113,26 @@ function draw() {
       branch5(r + 6);
       pop();
     }
-
-
 }
+
+function addButton() {
+  //add a button  
+  button = createButton("SAVE");
+  button.parent("gui-container"); 
+  button.addClass("button");
+  // press the button
+  button.mousePressed(saveImages);
+}
+
+function saveImages(){
+  console.log("Saved");    
+  button.html("SAVING");   
+  button.addClass("inactive"); 
+
+  save("img_" + month() + '-' + day() + '_' + hour() + '-' + minute() + '-' + second() + ".jpg");
+}
+
+
 
 function branch1(length) {
 	strokeWeight(1.5);

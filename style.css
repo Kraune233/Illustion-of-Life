@@ -5,3 +5,35 @@ html, body {
 canvas {
   display: block;
 }
+
+/*styled button */
+.button{
+  background-color: fff6a4;;
+  border: solid 1px #d8d8dc;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin:0 auto;
+  font-size: 16px;
+  min-width: 200px;
+  cursor: pointer;
+}
+
+
+
+.button:hover{
+  background-color:white;
+  color: #f1a09a;
+}
+
+
+/*add inactive state styling*/
+.button.inactive{
+  cursor:default;
+  background-color: lightgray;
+  border-color: lightgray;
+  color: white;
+}
